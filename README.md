@@ -1,0 +1,2 @@
+# AstroPhotoGenerator
+Astrophotography generator
