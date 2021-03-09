@@ -12,7 +12,8 @@ from torchvision.transforms import Compose, RandomVerticalFlip, RandomHorizontal
 
 from dcgan import DCGAN, Discriminator, Generator
 from utils import square, resize, AstroDataset, get_manifold_image, logging
-
+import warnings
+warnings.filterwarnings('ignore')
 
 arg_parse = argparse.ArgumentParser()
 
@@ -66,6 +67,8 @@ for epoch in range(args.n_epoch):
     for train_batch in tqdm.tqdm(data_loader):
         D_loss, (real_D_loss, fake_D_loss) = dcgan.train_dis_step(train_batch)
         G_loss = dcgan.train_gen_step(train_batch)
+        while epoch > 0 and fake_D_loss < 0.1 and G_loss > 1.:
+            G_loss = dcgan.train_gen_step(train_batch)
 
         G_epoch_loss.append(G_loss)
         D_epoch_loss.append(D_loss)
