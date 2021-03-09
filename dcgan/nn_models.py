@@ -1,12 +1,5 @@
 import torch.nn as nn
 
-class Foo(nn.Module):
-    def __init__(self):
-        super(Foo, self).__init__()
-
-    def forward(self, x):
-        print(x.shape)
-        return x
 
 class Generator(nn.Module):
     def __init__(self, z_dim, ngf, n_ch):
