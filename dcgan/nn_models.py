@@ -1,6 +1,6 @@
 import torch.nn as nn
 
-nn.InstanceNorm2d()
+
 class Generator(nn.Module):
     def __init__(self, z_dim, ngf, n_ch):
         super(Generator, self).__init__()
